@@ -1,0 +1,47 @@
+.container {
+
+    padding: 0 16px;
+    margin: 32px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 288px;
+    color: #333;
+    font-size: 15px;
+    font-family: haas, pragmatica, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+img {
+    border-style: none;
+    vertical-align: text-top;
+}
+
+.logoWrapper {
+    font-size: 0;
+    margin-bottom: 48px;
+}
+
+.picture {
+    margin: 0 auto 35px auto;
+    max-width: 100%;
+    max-height: 96px;
+}
+
+.title {
+    margin: 0 0 8px 0;
+    font-family: TinkoffSans,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: -0.3px;
+}
+.content {
+    font-size: 15px;
+    line-height: 24px;
+    color: #666;
+}

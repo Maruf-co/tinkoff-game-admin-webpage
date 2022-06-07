@@ -1,0 +1,87 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.form{
+    font-family: 'tinkoffsans', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', system-ui, 'Roboto', 'Helvetica Neue', sans-serif;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgb(0 0 0 / 5%);
+
+    margin: 10em 25em;
+    padding: 1em 1em 1.5em;
+
+    height: 300px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2{
+    font-family: 'tinkoffsans', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', system-ui, 'Roboto', 'Helvetica Neue', sans-serif;
+    font-size: 28px;
+    font-weight: normal;
+    color: #000000;
+    /*text-shadow: 1px 1px 1px #ffffff;*/
+    /*-webkit-text-stroke: 1px #000000;*/
+}
+
+.loginInput, .passwordInput{
+    font-size: 100%;
+    background: #ecf1f7;
+
+    border-radius: 4px;
+    border: none;
+    margin: 0.1px auto;
+    height: 40px;
+    width: 260px;
+    padding: 15px 10px;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginInput:focus, .passwordInput:focus{
+    background-color: #ffffff;
+    border-color: black;
+}
+
+.loginButton {
+    background-color: #ffdd2d;
+    color: #333;
+
+    border-radius: 4px;
+    border: none;
+    width: 145px;
+    margin: 1em;
+    padding: 10px 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loginButton:hover {
+    background-color: #f8d93e;
+}
+
+.errorButton {
+    background-color: #ff0000;
+    color: #333;
+
+    border-radius: 4px;
+    border: none;
+    width: 145px;
+    margin: 1em;
+    padding: 10px 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,234 @@
+.presetPageContainer {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.titleBox {
+    background: #fff;
+    border-bottom: 2px solid black;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.titleInputBox {
+    margin: 0 20px;
+    justify-content: left;
+}
+.dataInput, .categoryDataInput {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    background-color: #fff;
+
+    font-size: 100%;
+    font-weight: 500;
+
+    border-radius: 4px;
+    height: 40px;
+    width: 260px;
+    padding: 15px 15px;
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dataInput:focus, .categoryDataInput:focus {
+    background-color: #ffffff;
+    border-color: black;
+}
+
+.dataInput {
+    width: 400px;
+    height: 40px;
+}
+.dataInput::placeholder, .dataInput[type="text"] {
+    font-size: large;
+    /*padding: 0 5px;*/
+    margin: 0 5px;
+}
+.dataInput:focus {
+    background-color: #ffdd2d;
+    outline: none;
+}
+.dataUnderText {
+    font-size: medium;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 5px;
+}
+
+.presetPageBody {
+    height: 150%;
+    width: 100%;
+
+    display: flex;
+    position: absolute;
+    top: 123.5px;
+    bottom: 0;
+}
+
+.categoryBox {
+    /*border-right: 2px solid black;*/
+    background: #fff;
+
+    width: 800px;
+    height: 150%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.categoryTitle {
+    font-size: xx-large;
+    margin: 10px;
+}
+
+.questionTypesColumns {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.questionTypesRows {
+    display: flex;
+}
+
+.questionTypeBox {
+    font-size: medium;
+    background: #ecf1f7;
+    border-radius: 8px;
+
+    margin: 15px 25px;
+    padding: 15px 5px 5px;
+    width: 150px;
+    height: 65px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.questionType {
+    font-size: inherit;
+    font-weight: bold;
+
+    margin: auto;
+}
+.questionCtr {
+    font-weight: bold;
+    text-align: right;
+}
+.questionTypeBoxChosen {
+    font-size: large;
+
+    background: #f8d93e;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgb(0 0 0 / 5%);
+
+    margin: 0px 0px;
+    padding: 15px 5px 5px;
+    width: 200px;
+    height: 100px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.categoryInputBox {
+    display: flex;
+    flex-direction: column;
+}
+
+.categoryInput {
+    background: #fff;
+    box-shadow: 0 4px 24px rgb(0 0 0 / 5%);
+    border-radius: 4px;
+
+    margin: 10px;
+    padding: 10px;
+    width: 400px;
+
+    display: flex;
+    flex-direction: column;
+}
+.categoryInputChosen {
+    background: #ffdd2d;
+    box-shadow: 0 4px 24px rgb(0 0 0 / 5%);
+    border-radius: 4px;
+
+    margin: 10px;
+    padding: 10px;
+    width: 400px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.categoryDataInput {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    background-color: #fff;
+    margin: 0;
+    width: 350px;
+    height: 35px;
+}
+.categoryDataInput::placeholder, .categoryDataInput[type="text"] {
+    font-size: large;
+    font-weight: 500;
+}
+.categoryDataInput:focus {
+    background-color: #fff;
+    outline: none;
+}
+
+.questionsCreatorBox {
+    border-left: 2px solid black;
+    padding: 10px;
+    width: inherit;
+    height: inherit;
+    overflow-y: scroll;
+}
+.questionTitle {
+    font-size: x-large;
+    font-weight: 600;
+}
+.questionLevelTitle {
+    font-size: large;
+    font-weight: 600;
+    margin-top: 40px;
+}
+.underline {
+    width: 25%;
+}
+
+.createQuestionButton {
+    background: url('/src/images/plus.svg') no-repeat center/6% #f5f6f7;
+    filter: brightness(95%);
+    border-radius: 8px;
+    border: none;
+
+    width: 400px;
+    height: 50px;
+    padding: 5px;
+    margin: 5px;
+}
+.createQuestionButton:hover {
+    background: url('/src/images/plus.svg') no-repeat center/5% #f5f6f7;
+    filter: brightness(90%);
+}
+
+
+.buttonsContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}

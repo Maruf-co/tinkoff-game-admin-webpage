@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+}
+
+@media screen and (min-width: 1024px) {
+    .innerContainer {
+        display: flex;
+        justify-content: center;
+    }
+}
+@media screen and (max-width: 1023px) {
+    .innerContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}
+
+.exit {
+    position: fixed;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    max-height: 30px;
+    z-index: 2147483640;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.exitText {
+    font-size: large;
+    font-weight: bold;
+    text-decoration: none;
+    color: grey;
+}
+.exitText:hover {
+    color: #000;
+}

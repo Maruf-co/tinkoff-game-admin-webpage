@@ -1,0 +1,135 @@
+.presetsContainer {
+    margin-top: 40px;
+
+}
+
+.createPreset {
+    font-size: x-large;
+    font-weight: 500;
+    background: #ecf1f7;
+
+    border-radius: 4px;
+    border: none;
+    margin: 10px auto;
+    height: 40px;
+    width: 330px;
+    padding: 15px 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.createPreset:hover {
+    background: #ecf1f7;
+    filter: brightness(95%);
+}
+
+.presetCell {
+    display: flex;
+}
+
+.presetBox {
+    background-color: #EBECF0;
+    border-radius: 4px;
+    box-shadow: 0 4px 24px rgb(0 0 0 / 5%);
+
+    width: 400px;
+    padding: 5px;
+    margin: 5px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.presetTitleAndDate {
+    display: flex;
+    justify-content: space-between;
+}
+.presetTitle {
+    font-size: xx-large;
+    font-weight: bold;
+    text-align: left;
+
+    margin: 5px 10px;
+}
+.presetDateContainer {
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: right;*/
+}
+.presetDate {
+    background: #ffdd2d;
+    font-size: medium;
+    font-weight: bold;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.attackTypes {
+    font-weight: 600;
+
+    margin: 5px 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.attackType {
+    font-size: medium;
+    margin: 10px;
+    /*padding: 5px;*/
+
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+}
+.copy {
+    background: url('/src/images/copy.svg') no-repeat center/60% #f5f6f7;
+    filter: brightness(95%);
+    border-radius: 4px;
+    border: none;
+
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    margin: 5px;
+}
+.copy:hover {
+    background: url('/src/images/copy.svg') no-repeat center/55% #f5f6f7;
+    filter: brightness(90%);
+}
+.editRoom {
+    background: url('/src/images/edit.svg') no-repeat center/55% #f5f6f7;
+    filter: brightness(95%);
+    border-radius: 4px;
+    border: none;
+
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    margin: 5px;
+}
+.editRoom:hover {
+    background: url('/src/images/edit.svg') no-repeat center/50% #f5f6f7;
+    filter: brightness(90%);
+}
+
+.delete {
+    background: url('/src/images/trash.svg') no-repeat center/75% #f5f6f7;
+    filter: brightness(95%);
+    border-radius: 4px;
+    border: none;
+
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    margin: 5px;
+}
+.delete:hover {
+    background: url('/src/images/trash.svg') no-repeat center/70% #f5f6f7;
+    filter: brightness(90%);
+}
