@@ -6,10 +6,10 @@ import {useState, useCallback} from "react";
 import {SERVER_URL} from "./App";
 
 export const Login = () => {
-    let login = ''
-    let password = ''
     let navigate = useNavigate()
     const [error, setError] = useState(false)
+    const [login, setLogin] = useState('')
+    const [password, setPassword] = useState('')
 
     const handleClick = useCallback(() => {
         fetch(`${SERVER_URL}/loginAsAdmin?login=${login}&password=${password}`)
@@ -25,7 +25,10 @@ export const Login = () => {
                     // console.log('Login: ' + login + '\nPass: ' + password)
                 }
             })
-
+        setTimeout(() => {
+            setError(false)
+            // console.log('Done')
+        }, 400)
     }, [login, password])
 
 
@@ -37,18 +40,14 @@ export const Login = () => {
                     className='loginInput'
                     type='text'
                     placeholder = 'Логин'
-                    onChange={(changeEvent) => {
-                        login = changeEvent.target.value;
-                    }}
+                    onChange={changeEvent => setLogin(changeEvent.target.value)}
                 />
                 <br/>
                 <input
                     className='passwordInput'
                     type='password'
                     placeholder = 'Пароль'
-                    onChange={(changeEvent) => {
-                        password = changeEvent.target.value;
-                    }}
+                    onChange={changeEvent => setPassword(changeEvent.target.value)}
                 />
                 <br/>
                 {/*{error ? 'errorButton' : 'loginButton'}*/}
