@@ -1,6 +1,6 @@
 import './styles/MakeRoomPage.css'
 
-import {useNavigate, useLocation, Link} from 'react-router-dom'
+import {useNavigate, useLocation} from 'react-router-dom'
 import {useState, useEffect} from "react";
 
 import {SERVER_URL} from "./App";
@@ -55,15 +55,17 @@ export const MakeRoomPage = () => {
                     </div>
                 </div>
                 <hr />
-                {leaderboard ? leaderboard.players.map(player => { return <div>
+                {leaderboard ? leaderboard.players.map(player => { return <div key={player.mail}>
                         <div className='leaderboardItem'>
-                            <div className='playerLevel'>{player.level}</div>
+                            <div className='playerLevelBox'>
+                                <div className='playerLevel'>{player.level}</div>
+                            </div>
                             <div className='playerContacts'>
                                 <div className='playerName'>{player.name}</div>
                                 <div className='playerMail'>{player.mail}</div>
                             </div>
                             {player.attackTypeToCorrectAnswers.map((correctCount, i) => {
-                                return <div className='playerStats'>
+                                return <div className='playerStats' key={i}>
                                     <div className='winRate'>{correctCount}</div>/
                                     <div className='loseRate'>{player.attackTypeToIncorrectAnswers[i]}</div>
                                 </div>
@@ -82,7 +84,7 @@ export const MakeRoomPage = () => {
                     }
                     navigate(`/main/${adminKey}`)
                 }}>
-                        Вернуться и сохранить
+                        Вернуться
                 </button>
 
                 <button className='hide' onClick={ () => {
