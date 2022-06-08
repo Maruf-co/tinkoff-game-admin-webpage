@@ -7,6 +7,8 @@ import {SERVER_URL} from "./App";
 
 
 export const MakeRoomPage = () => {
+    const titleIterator = [0, 1, 2]
+
     let navigate = useNavigate()
     const location = useLocation()
     const adminKey = document.cookie.split(';')[0]
@@ -38,21 +40,21 @@ export const MakeRoomPage = () => {
                 <div className='leaderboardItem'>
                     <div className='levelTitle'>Уровень</div>
                     <div className='playerTitle'>Игрок</div>
-                    <div className='mediumTitleBox'>
-                        <div className='mediumTitle'>
-                            {leaderboard ? leaderboard.attackTypes[0]: 'Название комнаты 1'}
-                        </div>
-                    </div>
-                    <div className='mediumTitleBox'>
-                        <div className='mediumTitle'>
-                            {leaderboard ? leaderboard.attackTypes[1]: 'Название комнаты 2'}
-                        </div>
-                    </div>
-                    <div className='mediumTitleBox'>
-                        <div className='mediumTitle'>
-                            {leaderboard ? leaderboard.attackTypes[2]: 'Название комнаты 3'}
-                        </div>
-                    </div>
+                    {titleIterator.map(i => {
+                        return (
+                            <div className='mediumTitleBox'>
+                                <div className='mediumTitle'>
+                                    <div>
+                                        {leaderboard ? leaderboard.attackTypes[i]: `Название комнаты ${i+1}`}
+                                    </div>
+                                    <div className='statsTitle'>
+                                        (<div className='winRate'>+</div>
+                                        <div className='loseRate'>/-</div>)
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
                 <hr />
                 {leaderboard ? leaderboard.players.map(player => { return <div key={player.mail}>
@@ -66,8 +68,8 @@ export const MakeRoomPage = () => {
                             </div>
                             {player.attackTypeToCorrectAnswers.map((correctCount, i) => {
                                 return <div className='playerStats' key={i}>
-                                    <div className='winRate'>{correctCount}</div>/
-                                    <div className='loseRate'>{player.attackTypeToIncorrectAnswers[i]}</div>
+                                    <div className='winRate'>{correctCount}</div>
+                                    <div className='loseRate'>/{player.attackTypeToIncorrectAnswers[i]}</div>
                                 </div>
                             })}
                         </div>

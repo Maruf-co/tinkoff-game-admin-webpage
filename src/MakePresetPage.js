@@ -145,7 +145,14 @@ export const addToLS = (obj) => {
     Object.keys(obj).map(key => {
         if (key === 'questionBlock') {
             Object.keys(obj[key]).map(innerKey => {
-                localStorage.setItem(`${obj.id}_${key}_${innerKey}`, obj[key][innerKey])
+                if (innerKey === 'answers') {
+                    obj[key][innerKey].map((question, i) => {
+                        localStorage.setItem(`${obj.id}_${key}_${innerKey}_${i}`, question)
+                    })
+                    localStorage.setItem(`${obj.id}_${key}_${innerKey}_length`, obj[key][innerKey].length)
+                } else {
+                    localStorage.setItem(`${obj.id}_${key}_${innerKey}`, obj[key][innerKey])
+                }
             })
         } else {
             localStorage.setItem(`${obj.id}_${key}`, obj[key])
@@ -156,7 +163,14 @@ export const delFromLS = (obj) => {
     Object.keys(obj).map(key => {
         if(key === 'questionBlock') {
             Object.keys(obj[key]).map(innerKey => {
-                localStorage.removeItem(`${obj.id}_${key}_${innerKey}`)
+                if (innerKey === 'answers') {
+                    obj[key][innerKey].map((question, i) => {
+                        localStorage.removeItem(`${obj.id}_${key}_${innerKey}_${i}`)
+                    })
+                    localStorage.removeItem(`${obj.id}_${key}_${innerKey}_length`)
+                } else {
+                    localStorage.removeItem(`${obj.id}_${key}_${innerKey}`)
+                }
             })
         } else {
             localStorage.removeItem(`${obj.id}_${key}`)
@@ -164,18 +178,22 @@ export const delFromLS = (obj) => {
     })
 }
 export const getFromLS = (objID) => {
-    const obj = {
+    const n = localStorage.getItem(`${objID}_questionBlock_answers_length`)
+    let arr = []
+    for(let i = 0; i < n; ++i) {
+        arr.push(i)
+    }
+    return {
         id: objID,
         topic: localStorage.getItem(`${objID}_topic`),
         questionBlock: {
             question: localStorage.getItem(`${objID}_questionBlock_question`),
-            answers: localStorage.getItem(`${objID}_questionBlock_answers`).split(','),
+            answers: arr.map(i => localStorage.getItem(`${objID}_questionBlock_answers_${i}`)),
             correctAnswer: localStorage.getItem(`${objID}_questionBlock_correctAnswer`),
             levelPrerequisite: localStorage.getItem(`${objID}_questionBlock_levelPrerequisite`),
         },
         isValid: localStorage.getItem(`${objID}_isValid`) === 'true'
     }
-    return obj
 }
 
 
@@ -202,11 +220,11 @@ export const MakePresetPage = () => {
 
     const [presetName, setPresetName] = useState('')
     const [categoryNames, setCategoryNames] = useState(['', '', ''])
-    const [date, setDate] = useState(getDate())
 
     const [questionType, setQuestionType] = useState(1)
     const [category, setCategory] = useState(1)
     const [presetQuestions, setPresetQuestions] = useState([])
+    const [date, setDate] = useState(getDate)
 
     const updatePresets = () => {
         if(presetQuestions) {
