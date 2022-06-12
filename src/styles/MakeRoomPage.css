@@ -146,18 +146,18 @@ hr {
     align-items: center;
 
 }
-.save, .saveMails, .upArrow, .downArrow, .cancel {
+.save, .saveMails, .upArrow, .downArrow {
     background-color: #ffdd2d;
 }
-.back, .hide {
+.back, .hide, .cancel {
     background: #ecf1f7;
 }
-.back:hover, .hide:hover {
+.back:hover, .hide:hover, .cancel:hover {
     background: #ecf1f7;
     filter: brightness(95%);
 }
 
-.save:hover, .saveMails:hover, .upArrow:hover, .downArrow:hover, .cancel:hover {
+.save:hover, .saveMails:hover, .upArrow:hover, .downArrow:hover {
     background-color: #f8d93e;
     filter: brightness(95%);
 }

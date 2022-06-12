@@ -68,6 +68,7 @@ export const RoomCreator = () => {
                         Старые комнаты
                     </button>
                     <button className='oldRoomsDownArrow' onClick={() => setShowOldRooms(!showOldRooms)}/>
+                    {showOldRooms ? <div className='oldRoomsSecondDownArrow' /> : null}
                 </div> : null
             }
 
@@ -75,7 +76,9 @@ export const RoomCreator = () => {
             {showOldRooms && oldRooms ? oldRooms.map(oldRoom => {
                 return (
                     <div className='oldRoom' key={`${oldRoom.code}_${oldRoom.date}`}>
-                        <div className='oldRoomBox'>
+                        <div className='oldRoomBox' onClick={() => {
+                            navigate('./create_room', {state:{name: oldRoom.code, preset: oldRoom.presetName, isNew: false}})
+                        }}>
                             <div className='roomNameAndDate'>
                                 <div className='roomNameTitle'>{oldRoom.code}</div>
                                 <div className='roomDateContainer'>
@@ -94,18 +97,13 @@ export const RoomCreator = () => {
                                 <div className='nums'> {oldRoom.playersReachingSpecificLocation[3]} </div>
                                 <div className='final' />
                                 <div className='nums'> {oldRoom.playersReachingSpecificLocation[4]} </div>
+                                <button className='deleteRoom' onClick={() => {
+                                    if(window.confirm('Вы точно хотите удалить комнату?')) {
+                                        fetch(`${SERVER_URL}/removeRoom?roomcode=${oldRoom.code}&adminkey=${adminKey}`)
+                                        document.location.reload(true)
+                                    }
+                                }} />
                             </div>
-                        </div>
-                        <div className='options'>
-                            <button className='editRoom' onClick={() => {
-                                navigate('./create_room', {state:{name: oldRoom.code, preset: oldRoom.presetName, isNew: false}})
-                            }}/>
-                            <button className='delete' onClick={() => {
-                                if(window.confirm('Вы точно хотите удалить комнату?')) {
-                                    fetch(`${SERVER_URL}/removeRoom?roomcode=${oldRoom.code}&adminkey=${adminKey}`)
-                                    document.location.reload(true)
-                                }
-                            }} />
                         </div>
                     </div>
                 )

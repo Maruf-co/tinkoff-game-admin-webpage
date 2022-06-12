@@ -58,7 +58,9 @@ export const PresetsCreator = () => {
 
           {presets ? presets.map((preset, i) => {return <div className='presetCell'
                                                              key={`${preset.name}_${hashCode(Math.random().toString())}`}>
-                  <div className='presetBox'>
+                  <div className='presetBox' onClick={() => {
+                      navigate('./create_preset', {state:{presetID: presets.indexOf(preset).toString(), isNew: false}})
+                  }}>
                       <div className='presetTitleAndDate'>
                           <div className='presetTitle'>{preset.name}</div>
                           <div className='presetDateContainer'>
@@ -78,10 +80,6 @@ export const PresetsCreator = () => {
                       <button className='copy' onClick={() => {
                           setNewPresetData({isChanged: true, ID: i, name: preset.name, length: presets.length})
                           alert('Пресет скопирован! Обновите страницу')
-                      }}/>
-
-                      <button className='editRoom' onClick={() => {
-                          navigate('./create_preset', {state:{presetID: presets.indexOf(preset).toString(), isNew: false}})
                       }}/>
                       <button className='delete' onClick={() => {
                           if(window.confirm('Вы точно хотите удалить пресет?')) {
