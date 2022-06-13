@@ -1,9 +1,8 @@
 import './styles/QuestionBox.css';
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 import {addToLS} from "./MakePresetPage";
-
 
 export const QuestionBox = (props) => {
     const createAnswers = () => {
@@ -40,7 +39,6 @@ export const QuestionBox = (props) => {
                                     j === i ?
                                         {text: changeEvent.target.value, checkBox: el.checkBox}:
                                         el))
-                                updateQuestionBlock()
                             }}
                         />
                         <input className='checkbox'
@@ -51,12 +49,10 @@ export const QuestionBox = (props) => {
                                         j === i ?
                                             {text: el.text, checkBox: !el.checkBox}
                                             : el))
-                                   updateQuestionBlock()
                                }}
                         />
                         <button className='deleteChoice' onClick={() => {
                             setAnswers(answers.filter((el, j) => j !== i))
-                            updateQuestionBlock()
                         }}/>
                     </div>
                 )
@@ -64,7 +60,6 @@ export const QuestionBox = (props) => {
             {answers.length < 4 ?
                 <button className='addQuestion' onClick={() => {
                     setAnswers([...answers, {text: '', checkBox: false}])
-                    updateQuestionBlock()
                 }}>
                     <div className='addQuestionText'>Добавить вопрос</div>
                 </button>
@@ -90,12 +85,10 @@ export const QuestionBox = (props) => {
                                             j === i ?
                                                 {text: changeEvent.target.value, checkBox: el.checkBox}:
                                                 el))
-                                        updateQuestionBlock()
                                     }}
                                 />
                                 <button className='deleteChoice' onClick={() => {
                                     setAnswers(answers.filter((el, j) => j !== i))
-                                    updateQuestionBlock()
                                 }}/>
                             </div>
                         )
@@ -103,7 +96,6 @@ export const QuestionBox = (props) => {
                     {answers.length < 4 ?
                         <button className='addQuestion' onClick={() => {
                             setAnswers([...answers, {text: '', checkBox: false}])
-                            updateQuestionBlock()
                         }}>
                             <div className='addQuestionText'>Добавить вопрос</div>
                         </button>
@@ -131,7 +123,6 @@ export const QuestionBox = (props) => {
                                         j === i ?
                                             {text: changeEvent.target.value, checkBox: el.checkBox}:
                                             el))
-                                    updateQuestionBlock()
                                 }}
                             />
                             <input className='checkbox'
@@ -142,12 +133,10 @@ export const QuestionBox = (props) => {
                                            j === i ?
                                                {text: el.text, checkBox: !el.checkBox}
                                                : el))
-                                       updateQuestionBlock()
                                    }}
                             />
                             <button className='deleteChoice' onClick={() => {
                                 setAnswers(answers.filter((el, j) => j !== i))
-                                updateQuestionBlock()
                             }}/>
                         </div>
                     )
@@ -155,7 +144,6 @@ export const QuestionBox = (props) => {
                 {answers.length < 4 ?
                     <button className='addQuestion' onClick={() => {
                         setAnswers([...answers, {text: '', checkBox: false}])
-                        updateQuestionBlock()
                     }}>
                         <div className='addQuestionText'>Добавить вопрос</div>
                     </button>
@@ -180,7 +168,6 @@ export const QuestionBox = (props) => {
                                     j === i ?
                                         {text: changeEvent.target.value, checkBox: el.checkBox}:
                                         el))
-                                updateQuestionBlock()
                             }}
                         />
                         <button className={answer.checkBox ? 'anyRegisterButton' : 'registerButton'}
@@ -189,19 +176,16 @@ export const QuestionBox = (props) => {
                                         j === i ?
                                             {text: el.text, checkBox: !el.checkBox}
                                             : el))
-                                    updateQuestionBlock()
                                 }}
                         />
                         <button className='deleteChoice' onClick={() => {
                             setAnswers(answers.filter((el, j) => j !== i))
-                            updateQuestionBlock()
                         }}/>
                     </div>
                 )
             })}
             <button className='addQuestion' onClick={() => {
                 setAnswers([...answers, {text: '', checkBox: false}])
-                updateQuestionBlock()
             }}>
                 <div className='addQuestionText'>Добавить вопрос</div>
             </button>
@@ -255,8 +239,7 @@ export const QuestionBox = (props) => {
         }
         addToLS(modifiedQuestion)
     }
-    // useEffect(updateQuestionBlock, [question, answers, isValid])
-
+    useEffect(updateQuestionBlock, [question, answers, isValid])
 
     return (
         <div className='questionBoxWithValidation'>
@@ -268,7 +251,8 @@ export const QuestionBox = (props) => {
                     maxLength="150"
                     onBlur={(changeEvent) => {
                         setQuestion(changeEvent.target.value);
-                        updateQuestionBlock()
+                        // updateQuestionBlock()
+                        // setIsValid(updateQuestionBlock(answers, props, question))
                     }}
                 />
                 <div className='answers'>Ответы:</div>
