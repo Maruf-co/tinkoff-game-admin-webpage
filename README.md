@@ -1,10 +1,54 @@
-# Getting Started with Create React App
+# T-Quest | admin web-page
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Website for the admin of the T-Quest game to moderate it.
 
+___
+## Description
+
+Intellectual game T-Quest consist of different test-questions that need to be created/modified. For this reason 
+admin of the game needs this web-site, where he has all necessary functionality. For example,
+storing leaderboards of players inside one room, creating presets of questions with later modification of them, 
+managing presets/rooms, etc. More detailed description of each page provided in next section below
+
+___
+## Login page
+Ordinary login page needed for different admins preventing access of everyone to website 
+
+![Login](src/images/login.png)
+
+## Main Page
+In this main page admin able to go to other 2 pages or exit pressing button in the bottom. <br/>
+On the left side admin can create new room, hide/show old rooms (pressing 'Старые комнаты' button),
+go to created rooms or delete them. <br/>
+On the right site there is ability to create new preset (pressing '+ Создать пресет' button), copy/delete 
+existing presets or go to their page for modification by clicking on them.
+![MainPage](src/images/mainPage.png)
+
+## Room Page
+In this page admin can track progress of players, hide/show QR-code
+directing to game with this room's setup.
+![RoomPage](src/images/roomPage.png)
+Also admin can save mails of players on his clipboard
+with filter on their level:
+![RoomPage](src/images/saveMails.png)
+
+## Preset page
+On this page admin can create test-questions that players will see in the game.
+On the left site admin can name attack types simultaneously clicking in this field
+to assign questions to this attack type. Also there are 4 types of questions that also 
+can be chosen while creating questions and number of questions of such question type for chosen attack type are written
+in the corner. <br/>
+On the right there is field for creating/copying/ deleting questions. Inside question box
+admin able to modify question, add/del/edit answers and all of them are validated, so invalid answer
+won't be sent on server.
+
+![PresetPage](src/images/presetPage.png)
+
+*Questions with all metadata stored locally using localStorage in order to make less server requests*
+
+___
 ## Available Scripts
 
-In the project directory, you can run:
 
 ### `npm start`
 
@@ -28,43 +72,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
