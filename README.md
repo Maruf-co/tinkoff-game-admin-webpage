@@ -1,17 +1,17 @@
-# T-Quest | admin web-page
+# T-Quest | admin webpage
 
 Website for the admin of the T-Quest game to moderate it.
 
 ## Description
 
-Intellectual game T-Quest consist of different test-questions that need to be created/modified. For this reason 
+Intellectual T-Quest game consist of different test-questions that need to be created/modified. For this reason 
 admin of the game needs this web-site, where he has all necessary functionality. For example,
 storing leaderboards of players inside one room, creating presets of questions with later modification of them, 
 managing presets/rooms, etc. More detailed description of each page provided in next section below
 
 ___
 ## Login page
-Ordinary login page needed for different admins preventing access of everyone to website 
+Ordinary login page for several admins preventing access of everyone to website 
 
 ![Login](src/images/login.png)
 
@@ -36,9 +36,9 @@ with filter on their level:
 ![RoomPage](src/images/saveMails.png)
 
 ## Preset page
-On this page admin can create test-questions that players will see in the game.
-On the left site admin can name attack types simultaneously clicking in this field
-to assign questions to this attack type. Also there are 4 types of questions that also 
+On this page admin can create test-questions that players will see in the game. <br/>
+On the left site admin can give names for attack types simultaneously clicking in this field
+to assign questions to this attack type. Also, there are 4 types of questions that 
 can be chosen while creating questions and number of questions of such question type for chosen attack type are written
 in the corner. <br/>
 On the right there is field for creating/copying/ deleting questions. Inside question box
@@ -47,7 +47,7 @@ won't be sent on server.
 
 ![PresetPage](src/images/presetPage.png)
 
-*Questions with all metadata stored locally using localStorage in order to make less server requests*
+*Questions array with all metadata stored locally using localStorage in order to make less server requests*
 
 ___
 ## Available Scripts
