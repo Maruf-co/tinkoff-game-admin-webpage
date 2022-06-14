@@ -4,11 +4,11 @@ import {useState, useEffect} from "react";
 
 import {hashCode} from "./MakePresetPage";
 import {SERVER_URL} from "./App";
+import {adminKey} from "./MainPage";
 
 
 export const PresetsCreator = () => {
     let navigate = useNavigate()
-    const adminKey = document.cookie.split(';')[0]
     const [presets, setPresets] = useState()
     const [doesReload, setReload] = useState(false)
     const [newPresetData, setNewPresetData] = useState({ID: -1, isChanged: false, name: '', length: -1})

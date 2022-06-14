@@ -4,12 +4,12 @@ import {useState, useEffect} from "react";
 import {useNavigate} from 'react-router-dom'
 
 import {SERVER_URL} from "./App";
+import {adminKey} from "./MainPage";
 
 
 export const RoomCreator = () => {
     let roomName = ''
     let navigate = useNavigate()
-    const adminKey = document.cookie.split(';')[0]
     const [oldRooms, setOldRooms] = useState()
     const [showOldRooms, setShowOldRooms] = useState(false)
     const [presets, setPresets] = useState()

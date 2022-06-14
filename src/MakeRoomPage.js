@@ -4,6 +4,7 @@ import {useNavigate, useLocation} from 'react-router-dom'
 import {useState, useEffect} from "react";
 
 import {SERVER_URL} from "./App";
+import {adminKey} from "./MainPage";
 
 
 export const MakeRoomPage = () => {
@@ -11,7 +12,6 @@ export const MakeRoomPage = () => {
 
     let navigate = useNavigate()
     const location = useLocation()
-    const adminKey = document.cookie.split(';')[0]
     const [leaderboard, setLeaderboard] = useState()
     const [mailPopUp, setMailPopUp] = useState(false)
     let [level, setLevel] = useState(0);
