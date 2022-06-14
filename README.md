@@ -2,7 +2,6 @@
 
 Website for the admin of the T-Quest game to moderate it.
 
-___
 ## Description
 
 Intellectual game T-Quest consist of different test-questions that need to be created/modified. For this reason 
@@ -22,14 +21,18 @@ On the left side admin can create new room, hide/show old rooms (pressing 'Ст�
 go to created rooms or delete them. <br/>
 On the right site there is ability to create new preset (pressing '+ Создать пресет' button), copy/delete 
 existing presets or go to their page for modification by clicking on them.
+
 ![MainPage](src/images/mainPage.png)
 
 ## Room Page
 In this page admin can track progress of players, hide/show QR-code
 directing to game with this room's setup.
+
 ![RoomPage](src/images/roomPage.png)
+
 Also admin can save mails of players on his clipboard
 with filter on their level:
+
 ![RoomPage](src/images/saveMails.png)
 
 ## Preset page
