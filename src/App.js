@@ -14,7 +14,7 @@ export const SERVER_URL = "https://tinkoff-quest-test-server.herokuapp.com";
 
 function App() {
     useEffect(() => {
-        document.title = 'T-Quest | Admin'
+        document.title = 'T-Battle | Admin'
     }, [])
 
     return (
