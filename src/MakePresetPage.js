@@ -14,7 +14,7 @@ export const TEMPLATE_PRESET_DATA = [
             question: '',
             answers: [],
             correctAnswer: '',
-            levelPrerequisite: '0'
+            levelPrerequisite: '6'
         },
         isValid: false
     },
@@ -25,7 +25,7 @@ export const TEMPLATE_PRESET_DATA = [
             question: '',
             answers: [],
             correctAnswer: '',
-            levelPrerequisite: '0'
+            levelPrerequisite: '6'
         },
         isValid: false
     },
@@ -36,7 +36,7 @@ export const TEMPLATE_PRESET_DATA = [
             question: '',
             answers: [],
             correctAnswer: '',
-            levelPrerequisite: '0'
+            levelPrerequisite: '6'
         },
         isValid: false
     },
@@ -47,7 +47,7 @@ export const TEMPLATE_PRESET_DATA = [
             question: '',
             answers: [],
             correctAnswer: '',
-            levelPrerequisite: '0'
+            levelPrerequisite: '8'
         },
         isValid: false
     },
@@ -58,7 +58,7 @@ export const TEMPLATE_PRESET_DATA = [
             question: '',
             answers: [],
             correctAnswer: '',
-            levelPrerequisite: '0'
+            levelPrerequisite: '8'
         },
         isValid: false
     },
@@ -69,7 +69,7 @@ export const TEMPLATE_PRESET_DATA = [
             question: '',
             answers: [],
             correctAnswer: '',
-            levelPrerequisite: '0'
+            levelPrerequisite: '8'
         },
         isValid: false
     },
@@ -80,7 +80,7 @@ export const TEMPLATE_PRESET_DATA = [
             question: '',
             answers: [],
             correctAnswer: '',
-            levelPrerequisite: '0'
+            levelPrerequisite: '4'
         },
         isValid: false
     },
@@ -91,7 +91,7 @@ export const TEMPLATE_PRESET_DATA = [
             question: '',
             answers: [],
             correctAnswer: '',
-            levelPrerequisite: '0'
+            levelPrerequisite: '4'
         },
         isValid: false
     },
@@ -102,7 +102,7 @@ export const TEMPLATE_PRESET_DATA = [
             question: '',
             answers: [],
             correctAnswer: '',
-            levelPrerequisite: '0'
+            levelPrerequisite: '4'
         },
         isValid: false
     },
@@ -495,37 +495,53 @@ export const MakePresetPage = () => {
                 </div>
 
                 <div className='questionsCreatorBox'>
-                    <div className='questionTitle'>Начальные вопросы</div>
-                    <hr className='underline'/>
-                    {presetQuestions ?
-                        outputQuestions('0', '4', questionType, category) :
-                        null}
-                    <button className='createQuestionButton' onClick={() => {
-                        const curTopic = getTopic(questionType, category)
-                        addQuestion('0', curTopic, '', [], '', '', false)
-                    }}/>
+                    {questionType === 1 ?
+                        <div>
+                            <div className='questionTitle'>Начальные вопросы</div>
+                                <hr className='underline'/>
+                            {presetQuestions ?
+                                outputQuestions('0', '4', questionType, category) :
+                                null}
+                                <button className='createQuestionButton' onClick={() => {
+                                const curTopic = getTopic(questionType, category)
+                                addQuestion('0', curTopic, '', [], '', '', false)
+                            }}/>
+                        </div>
+                        : null
+                    }
 
-                    <div className='questionLevelTitle'>Вопросы после уровня 4</div>
-                    <hr className='underline'/>
-                    {presetQuestions ?
-                        outputQuestions('4', '6', questionType, category) :
-                        null}
-                    <button className='createQuestionButton' onClick={() => {
-                        const curTopic = getTopic(questionType, category)
-                        addQuestion('4', curTopic, '', [], '', '', false)
-                        // setPresetQuestions([...presetQuestions, newQ])
-                    }}/>
+                    {(questionType === 1 || questionType === 2)?
+                        <div>
+                            <div className='questionLevelTitle'>Вопросы после уровня 4</div>
+                            <hr className='underline'/>
+                            {presetQuestions ?
+                                outputQuestions('4', '6', questionType, category) :
+                                null}
+                            <button className='createQuestionButton' onClick={() => {
+                                const curTopic = getTopic(questionType, category)
+                                addQuestion('4', curTopic, '', [], '', '', false)
+                            }}/>
+                        </div>
+                        :
+                        null
+                    }
 
-                    <div className='questionLevelTitle'>Вопросы после уровня 6</div>
-                    <hr className='underline'/>
-                    {presetQuestions ?
-                        outputQuestions('6', '8', questionType, category) :
-                        null}
-                    <button className='createQuestionButton' onClick={() => {
-                        const curTopic = getTopic(questionType, category)
-                        addQuestion('6', curTopic, '', [], '', '', false)
-                        // setPresetQuestions([...presetQuestions, newQ])
-                    }}/>
+                    {questionType !== 4 ?
+                        <div>
+                            <div className='questionLevelTitle'>Вопросы после уровня 6</div>
+                            <hr className='underline'/>
+                            {presetQuestions ?
+                                outputQuestions('6', '8', questionType, category) :
+                                null}
+                            <button className='createQuestionButton' onClick={() => {
+                                const curTopic = getTopic(questionType, category)
+                                addQuestion('6', curTopic, '', [], '', '', false)
+                                // setPresetQuestions([...presetQuestions, newQ])
+                            }}/>
+                        </div>
+                        :
+                        null
+                    }
 
                     <div className='questionLevelTitle'>Вопросы после уровня 8</div>
                     <hr className='underline'/>
