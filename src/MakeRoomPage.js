@@ -42,7 +42,7 @@ export const MakeRoomPage = () => {
                     <div className='playerTitle'>Игрок</div>
                     {titleIterator.map(i => {
                         return (
-                            <div className='mediumTitleBox'>
+                            <div className='mediumTitleBox' key={i}>
                                 <div className='mediumTitle'>
                                     <div>
                                         {leaderboard ? leaderboard.attackTypes[i]: `Название комнаты ${i+1}`}
@@ -81,9 +81,6 @@ export const MakeRoomPage = () => {
             </div>
             <div className='buttons'>
                 <button className='back' onClick={() => {
-                    if(location.state.isNew) {
-                        fetch(`${SERVER_URL}/createRoom?roomcode=${location.state.name}&presetindex=${location.state.presetID}&adminkey=${adminKey}`)
-                    }
                     navigate(`/main/${adminKey}`)
                 }}>
                         Вернуться

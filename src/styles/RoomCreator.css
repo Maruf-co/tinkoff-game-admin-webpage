@@ -69,6 +69,78 @@
     background: url('/src/images/pencil.svg') no-repeat center/55% #f8d93e;
 }
 
+.finalWordsBox {
+    display: flex;
+    flex-direction: column;
+}
+.finalWordsButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.finalWordsTitle {
+    font-size: medium;
+    font-weight: bold;
+    /*margin: 10px;*/
+    padding: 7px;
+}
+.castleButton, .desertButton, .winterButton, .finalButton,
+.castleChosen, .desertChosen, .winterChosen, .finalChosen {
+    border: none;
+    border-radius: 4px;
+
+    width: 35px;
+    height: 35px;
+
+    margin: 5px;
+
+}
+
+.castleButton:hover, .castleChosen, .desertButton:hover, .desertChosen,
+.winterButton:hover, .winterChosen, .finalButton:hover, .finalChosen {
+    filter: brightness(90%);
+}
+.castleChosen:hover, .desertChosen:hover, .winterChosen:hover, .finalChosen:hover {
+    filter: brightness(85%);
+}
+
+.castleButton {
+    background: url('/src/images/castle.svg') no-repeat center/80% #ecf1f7;
+}
+.castleButton:hover, .castleChosen {
+    background: url('/src/images/castle.svg') no-repeat center/75% #ecf1f7;
+}
+.desertButton {
+    background: url('/src/images/desert.svg') no-repeat center/80% #ecf1f7;
+}
+.desertButton:hover, .desertChosen {
+    background: url('/src/images/desert.svg') no-repeat center/75% #ecf1f7;
+}
+.winterButton {
+    background: url('/src/images/snowflake.svg') no-repeat center/80% #ecf1f7;
+}
+.winterButton:hover, .winterChosen {
+    background: url('/src/images/snowflake.svg') no-repeat center/75% #ecf1f7;
+}
+.finalButton {
+    background: url('/src/images/finish_flag.svg') no-repeat center/80% #ecf1f7;
+}
+.finalButton:hover, .finalChosen {
+    background: url('/src/images/finish_flag.svg') no-repeat center/75% #ecf1f7;
+}
+
+.finaWordsInput {
+    font-size: 100%;
+    background: #ecf1f7;
+
+    border-radius: 4px;
+    border: none;
+    margin: 5px auto;
+    height: 15px;
+    width: 350px;
+    padding: 15px 10px;
+}
+
 
 .oldRoomsButton {
     font-size: x-large;
@@ -170,6 +242,10 @@
 .oldRoomLocations {
     display: flex;
 }
+.locationIcons {
+    display: flex;
+}
+
 .meadow {
     background: url('/src/images/meadow.svg') no-repeat center/100% #EBECF0;
     border-radius: 4px;

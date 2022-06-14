@@ -6,10 +6,37 @@ import {useNavigate} from 'react-router-dom'
 import {SERVER_URL} from "./App";
 import {adminKey} from "./MainPage";
 
+export const finalTextTemplate = [
+    [
+        'я',
+        'люблю',
+        'пельмени'
+    ],
+    [
+        'ты',
+        'победил',
+        'друг'
+    ],
+    [
+        'ура',
+        'ура',
+        'ору'
+    ],
+    [
+        'Спасибо за прохождение игры',
+        'Вы сразили всех боссов и достигли десятого уровня!',
+        'Подойдите к стенду и заберите свою награду'
+    ]
+]
+
 
 export const RoomCreator = () => {
-    let roomName = ''
     let navigate = useNavigate()
+    const [roomName, setRoomName] = useState('')
+    const [finalWordsChosen, setFinalWordsChosen] = useState(0)
+    const finalInputPlaceholders = ['верхнее', 'центральное', 'нижнее']
+    const locations = ['meadow', 'castle', 'desert', 'winter', 'final']
+    const [customFinalText, setCustomFinalText] = useState(finalTextTemplate)
     const [oldRooms, setOldRooms] = useState()
     const [showOldRooms, setShowOldRooms] = useState(false)
     const [presets, setPresets] = useState()
@@ -35,9 +62,7 @@ export const RoomCreator = () => {
                             className='roomName'
                             type='text'
                             placeholder='Введите название комнаты...'
-                            onChange={(changeEvent) => {
-                                roomName = changeEvent.target.value;
-                            }}
+                            onBlur={(changeEvent) => setRoomName(changeEvent.target.value)}
                         />
                         <div className='presetSelector'>
                             <select className='presets' id='existingPresets'>
@@ -56,10 +81,70 @@ export const RoomCreator = () => {
                         const select = document.getElementById('existingPresets');
                         const chosenPreset = select.options[select.selectedIndex].value.split('_');
                         if(roomName !== '') {
-                            navigate('./create_room', {state:{name: roomName, preset: chosenPreset[0], presetID: chosenPreset[1], isNew: true}})
+                            const finalWords = {
+                                customTextAfterSpecificLocation: customFinalText
+                            }
+                            const options = {
+                                method: 'POST',
+                                body: JSON.stringify(finalWords),
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                }
+                            }
+                            fetch(`${SERVER_URL}/createRoom?roomcode=${roomName}&presetindex=${chosenPreset[1]}&adminkey=${adminKey}`, options)
+                            navigate('./create_room', {state:{name: roomName, preset: chosenPreset[0]}})
                         }
                     }}/>
-
+                </div>
+                <div className='finalWordsBox'>
+                    <div className='finalWordsButtons'>
+                        <div className='finalWordsTitle'>
+                            Изменить текст наград:
+                        </div>
+                        {locations.map((el, i) => {
+                            if (i !== 0) {
+                                return(
+                                    <button
+                                        key={`${el}_${i}`}
+                                        className={finalWordsChosen === i ? `${el}Chosen` : `${el}Button`}
+                                        onClick={() => {
+                                            finalWordsChosen === i ?
+                                                setFinalWordsChosen(0)
+                                                :
+                                                setFinalWordsChosen(i)}
+                                        }/>
+                                )
+                            }
+                        })}
+                    </div>
+                    {finalWordsChosen !== 0 ?
+                        finalInputPlaceholders.map((el, i) => {
+                            return(
+                                <input
+                                    key={`${el}_${customFinalText[finalWordsChosen-1][i]}`}
+                                    className='finaWordsInput'
+                                    type='textarea'
+                                    placeholder={`Введите ${el} предложение...`}
+                                    defaultValue={customFinalText[finalWordsChosen-1][i]}
+                                    onBlur={(changeEvent) => {
+                                        // rewrite whole customFinalText array after some change made
+                                        setCustomFinalText(
+                                            customFinalText.map((finalText, j) => {
+                                            if (j !== finalWordsChosen-1) { // case when we are not in needed place
+                                                return finalText
+                                            } else {
+                                                return customFinalText[j].map((customFinalWord, k) => {
+                                                    return k !== i ? customFinalWord : changeEvent.target.value
+                                                })
+                                            }})
+                                        )
+                                    }}
+                                />
+                            )
+                        })
+                        :
+                        null
+                    }
                 </div>
             </div>
             {oldRooms && oldRooms.length > 0 ?
@@ -87,16 +172,15 @@ export const RoomCreator = () => {
                             </div>
                             <div className='presetNameTitle'>{oldRoom.presetName}</div>
                             <div className='oldRoomLocations'>
-                                <div className='meadow' />
-                                <div className='nums'> {oldRoom.playersReachingSpecificLocation[0]} </div>
-                                <div className='castle' />
-                                <div className='nums'> {oldRoom.playersReachingSpecificLocation[1]} </div>
-                                <div className='desert' />
-                                <div className='nums'> {oldRoom.playersReachingSpecificLocation[2]} </div>
-                                <div className='winter' />
-                                <div className='nums'> {oldRoom.playersReachingSpecificLocation[3]} </div>
-                                <div className='final' />
-                                <div className='nums'> {oldRoom.playersReachingSpecificLocation[4]} </div>
+                                {locations.map((el, i) => {
+                                    return <div className='locationIcons' key={`${el}_${i}`}>
+                                        <div className={el} />
+                                        <div className='nums'>
+                                            {oldRoom.playersReachingSpecificLocation[i]}
+                                        </div>
+                                    </div>
+                                })}
+
                                 <button className='deleteRoom' onClick={() => {
                                     if(window.confirm('Вы точно хотите удалить комнату?')) {
                                         fetch(`${SERVER_URL}/removeRoom?roomcode=${oldRoom.code}&adminkey=${adminKey}`)
