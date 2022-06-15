@@ -152,7 +152,10 @@ export const RoomCreator = () => {
                     <button className='oldRoomsButton' onClick={() => setShowOldRooms(!showOldRooms)}>
                         Старые комнаты
                     </button>
-                    <button className='oldRoomsDownArrow' onClick={() => setShowOldRooms(!showOldRooms)}/>
+                    <button className={showOldRooms ? 'oldRoomsDownArrow' : 'oldRoomsDownArrowSmall'}
+                            onClick={() => setShowOldRooms(!showOldRooms)}
+                    />
+
                     {showOldRooms ? <div className='oldRoomsSecondDownArrow' /> : null}
                 </div> : null
             }
