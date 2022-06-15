@@ -5,7 +5,6 @@ import {useEffect, useState} from "react";
 import {QuestionBox} from "./QuestionBox";
 
 import {SERVER_URL} from "./App";
-import {adminKey} from "./MainPage";
 
 export const TEMPLATE_PRESET_DATA = [
     {
@@ -217,7 +216,7 @@ export const hashCode = (word) => {
 export const MakePresetPage = () => {
     let navigate = useNavigate()
     const location = useLocation()
-
+    const adminKey = document.cookie.split(';')[0]
     const [presetName, setPresetName] = useState('')
     const [categoryNames, setCategoryNames] = useState(['', '', ''])
 

@@ -16,7 +16,6 @@ export const Login = () => {
             .then(response => response.json())
             .then(data => {
                 if(data.adminKey) {
-                    // console.log('Ok!')
                     document.cookie = data.adminKey
                     navigate(`/main/${data.adminKey}`)
                 } else {

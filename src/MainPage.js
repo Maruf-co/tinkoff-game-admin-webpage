@@ -1,6 +1,6 @@
 import './styles/MainPage.css';
 
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 // pages
 import {RoomCreator} from "./RoomCreator";
 import {PresetsCreator} from "./PresetsCreator";
@@ -10,6 +10,7 @@ import {SERVER_URL} from "./App";
 export const adminKey = document.cookie.split(';')[0]
 
 export const MainPage = () => {
+    let navigate = useNavigate()
     const [newPass, setNewPass] = useState('')
     const [confirmPass, setConfirmPass] = useState('')
 
@@ -25,9 +26,11 @@ export const MainPage = () => {
                 <div className='exitText' onClick={() => setPassEditorVisibility(true)}>
                     [Редактировать пароль]
                 </div>
-                <Link className='exitText' to='/'>
+                <div className='exitText' onClick={() => {
+                    navigate(-1)
+                }}>
                     [Выйти из аккаунта]
-                </Link>
+                </div>
             </div>
             {passEditorVisibility ?
                 <div className='editPassPopup'>
