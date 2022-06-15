@@ -120,10 +120,10 @@ export const RoomCreator = () => {
                     {finalWordsChosen !== 0 ?
                         finalInputPlaceholders.map((el, i) => {
                             return(
-                                <input
+                                <textarea
                                     key={`${el}_${customFinalText[finalWordsChosen-1][i]}`}
-                                    className='finaWordsInput'
-                                    type='textarea'
+                                    className='finalWordsInput'
+                                    // type='text'
                                     placeholder={`Введите ${el} предложение...`}
                                     defaultValue={customFinalText[finalWordsChosen-1][i]}
                                     onBlur={(changeEvent) => {

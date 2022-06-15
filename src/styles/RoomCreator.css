@@ -84,6 +84,7 @@
     /*margin: 10px;*/
     padding: 7px;
 }
+
 .castleButton, .desertButton, .winterButton, .finalButton,
 .castleChosen, .desertChosen, .winterChosen, .finalChosen {
     border: none;
@@ -129,14 +130,15 @@
     background: url('/src/images/finish_flag.svg') no-repeat center/75% #ecf1f7;
 }
 
-.finaWordsInput {
+.finalWordsInput {
     font-size: 100%;
     background: #ecf1f7;
 
     border-radius: 4px;
     border: none;
+    resize: none;
     margin: 5px auto;
-    height: 15px;
+    height: 20px;
     width: 350px;
     padding: 15px 10px;
 }
