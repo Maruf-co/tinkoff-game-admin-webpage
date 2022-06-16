@@ -143,6 +143,39 @@
     padding: 15px 10px;
 }
 
+.userAgreementBlock {
+    display: flex;
+    align-items: center;
+}
+.userAgreementTitle {
+    font-size: medium;
+    font-weight: bold;
+    /*margin: 10px;*/
+    padding: 7px;
+}
+.userAgreementCheckBox {
+    border: none;
+    border-radius: 4px;
+    background-color: #ecf1f7;
+    height: 25px;
+    width: 25px;
+    margin: 5px;
+}
+.userAgreementCheckBox:hover {
+    filter: brightness(95%);
+}
+.userAgreementCheckBoxChecked {
+    border: none;
+    border-radius: 4px;
+    background: url('/src/images/checkbox.svg') no-repeat center/75% #ecf1f7;
+    height: 25px;
+    width: 25px;
+    margin: 5px;
+}
+.userAgreementCheckBoxChecked:hover {
+    filter: brightness(95%);
+}
+
 
 .oldRoomsButton {
     font-size: x-large;

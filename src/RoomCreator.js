@@ -35,6 +35,8 @@ export const RoomCreator = () => {
     const [roomName, setRoomName] = useState('')
     const [finalWordsChosen, setFinalWordsChosen] = useState(0)
     const finalInputPlaceholders = ['верхнее', 'центральное', 'нижнее']
+    const [showUserAgreement, setShowUserAgreement] = useState(false)
+    const [userAgreementLink, setUserAgreementLink] = useState('')
     const locations = ['meadow', 'castle', 'desert', 'winter', 'final']
     const [customFinalText, setCustomFinalText] = useState(finalTextTemplate)
     const [oldRooms, setOldRooms] = useState()
@@ -82,8 +84,10 @@ export const RoomCreator = () => {
                         const chosenPreset = select.options[select.selectedIndex].value.split('_');
                         if(roomName !== '') {
                             const finalWords = {
-                                customTextAfterSpecificLocation: customFinalText
+                                customTextAfterSpecificLocation: customFinalText,
+                                licenseAgreement: userAgreementLink
                             }
+                            console.log('Done!', finalWords);
                             const options = {
                                 method: 'POST',
                                 body: JSON.stringify(finalWords),
@@ -112,7 +116,8 @@ export const RoomCreator = () => {
                                                 setFinalWordsChosen(0)
                                                 :
                                                 setFinalWordsChosen(i)}
-                                        }/>
+                                        }
+                                    />
                                 )
                             }
                         })}
@@ -146,6 +151,24 @@ export const RoomCreator = () => {
                         null
                     }
                 </div>
+                <div className='userAgreementBlock'>
+                    <div className='userAgreementTitle'>
+                        Добавить пользовательское соглашение
+                    </div>
+                    <button
+                        className={showUserAgreement ? 'userAgreementCheckBoxChecked' : 'userAgreementCheckBox'}
+                        onClick={() => setShowUserAgreement(!showUserAgreement)}
+                    />
+                </div>
+                {showUserAgreement ?
+                    <textarea className='finalWordsInput'
+                              placeholder='Введите ссылку на соглашение...'
+                              onBlur={(changeEvent) => setUserAgreementLink(changeEvent.target.value)}
+                    />
+                    :
+                    null
+                }
+
             </div>
             {oldRooms && oldRooms.length > 0 ?
                 <div>
