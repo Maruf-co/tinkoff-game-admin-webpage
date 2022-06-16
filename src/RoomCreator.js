@@ -87,7 +87,6 @@ export const RoomCreator = () => {
                                 customTextAfterSpecificLocation: customFinalText,
                                 licenseAgreement: userAgreementLink
                             }
-                            console.log('Done!', finalWords);
                             const options = {
                                 method: 'POST',
                                 body: JSON.stringify(finalWords),
