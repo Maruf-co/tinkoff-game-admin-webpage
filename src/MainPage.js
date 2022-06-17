@@ -26,11 +26,9 @@ export const MainPage = () => {
                 <div className='exitText' onClick={() => setPassEditorVisibility(true)}>
                     [Редактировать пароль]
                 </div>
-                <div className='exitText' onClick={() => {
-                    navigate(-1)
-                }}>
+                <Link className='exitText' to='/'>
                     [Выйти из аккаунта]
-                </div>
+                </Link>
             </div>
             {passEditorVisibility ?
                 <div className='editPassPopup'>

@@ -183,32 +183,33 @@ export const RoomCreator = () => {
             }
 
 
-            {showOldRooms && oldRooms ? oldRooms.map(oldRoom => {
+            {showOldRooms && oldRooms ? oldRooms.map((oldRoom, index) => {
+                const i = oldRooms.length - index - 1
                 return (
-                    <div className='oldRoom' key={`${oldRoom.code}_${oldRoom.date}`}>
+                    <div className='oldRoom' key={`${oldRooms[i].code}_${oldRooms[i].date}`}>
                         <div className='oldRoomBox' onClick={() => {
-                            navigate('./create_room', {state:{name: oldRoom.code, preset: oldRoom.presetName, isNew: false}})
+                            navigate('./create_room', {state:{name: oldRooms[i].code, preset: oldRooms[i].presetName, isNew: false}})
                         }}>
                             <div className='roomNameAndDate'>
-                                <div className='roomNameTitle'>{oldRoom.code}</div>
+                                <div className='roomNameTitle'>{oldRooms[i].code}</div>
                                 <div className='roomDateContainer'>
-                                    <div className='roomDate'>{oldRoom.date}</div>
+                                    <div className='roomDate'>{oldRooms[i].date}</div>
                                 </div>
                             </div>
-                            <div className='presetNameTitle'>{oldRoom.presetName}</div>
+                            <div className='presetNameTitle'>{oldRooms[i].presetName}</div>
                             <div className='oldRoomLocations'>
-                                {locations.map((el, i) => {
-                                    return <div className='locationIcons' key={`${el}_${i}`}>
+                                {locations.map((el, j) => {
+                                    return <div className='locationIcons' key={`${el}_${j}`}>
                                         <div className={el} />
                                         <div className='nums'>
-                                            {oldRoom.playersReachingSpecificLocation[i]}
+                                            {oldRooms[i].playersReachingSpecificLocation[j]}
                                         </div>
                                     </div>
                                 })}
 
                                 <button className='deleteRoom' onClick={() => {
                                     if(window.confirm('Вы точно хотите удалить комнату?')) {
-                                        fetch(`${SERVER_URL}/removeRoom?roomcode=${oldRoom.code}&adminkey=${adminKey}`)
+                                        fetch(`${SERVER_URL}/removeRoom?roomcode=${oldRooms[i].code}&adminkey=${adminKey}`)
                                         document.location.reload(true)
                                     }
                                 }} />

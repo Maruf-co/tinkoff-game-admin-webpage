@@ -105,6 +105,7 @@ export const MakeRoomPage = () => {
                     <div className='mailLevel'>{level}</div>
                     <button className='downArrow' onClick={() => {setLevel(level > 0 ? (level-1) : 0)}} />
                     <div className='savePopupButtons'>
+                        <button className='cancel' onClick={() => setMailPopUp(false)}>Отменить</button>
                         <button className='saveMails' onClick={() => {
                             if(leaderboard) {
                                 let emails = '';
@@ -120,7 +121,6 @@ export const MakeRoomPage = () => {
                         }}>
                             Сохранить
                         </button>
-                        <button className='cancel' onClick={() => setMailPopUp(false)}>Отменить</button>
                     </div>
                 </div>
             </div> : null}

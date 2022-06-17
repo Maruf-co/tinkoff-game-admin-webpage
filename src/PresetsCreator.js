@@ -2,7 +2,7 @@ import './styles/PresetsCreator.css';
 import {useNavigate} from 'react-router-dom'
 import {useState, useEffect} from "react";
 
-import {hashCode} from "./MakePresetPage";
+import {getDate, hashCode} from "./MakePresetPage";
 import {SERVER_URL} from "./App";
 
 
@@ -26,6 +26,7 @@ export const PresetsCreator = () => {
                 if(data.error !== 'incorrect admin key.' && data.error !== 'incorrect index'
                     && newPresetData.isChanged) {
                         fetch(`${SERVER_URL}/createPreset?presetname=${newPresetData.name}&adminkey=${adminKey}`)
+                        data.date = getDate()
                         const options = {
                             method: 'POST',
                             body: JSON.stringify(data),
@@ -56,39 +57,43 @@ export const PresetsCreator = () => {
               <div className='createPresetTitle'> + Создать пресет </div>
           </button>
 
-          {presets ? presets.map((preset, i) => {return <div className='presetCell'
-                                                             key={`${preset.name}_${hashCode(Math.random().toString())}`}>
-                  <div className='presetBox' onClick={() => {
-                      navigate('./create_preset', {state:{presetID: presets.indexOf(preset).toString(), isNew: false}})
-                  }}>
-                      <div className='presetTitleAndDate'>
-                          <div className='presetTitle'>{preset.name}</div>
-                          <div className='presetDateContainer'>
-                              <div className='presetDate'>{preset.date}</div>
+          {presets ? presets.map((preset, i) => {
+              const j = presets.length - i - 1
+              return (
+                  <div className='presetCell'
+                       key={`${presets[j].name}_${hashCode(Math.random().toString())}`}>
+                      <div className='presetBox' onClick={() => {
+                          navigate('./create_preset', {state:{presetID: j, isNew: false}})
+                      }}>
+                          <div className='presetTitleAndDate'>
+                              <div className='presetTitle'>{presets[j].name}</div>
+                              <div className='presetDateContainer'>
+                                  <div className='presetDate'>{presets[j].date}</div>
+                              </div>
+                          </div>
+                          <div className='attackTypes'>
+                              {preset.attackTypes.map((attackType, k) => {
+                                  return <div className='attackType' key={attackType}>
+                                      <div>{attackType}</div>
+                                      <div>({preset.attackTypeCounts[k]})</div>
+                                  </div>
+                              })}
                           </div>
                       </div>
-                      <div className='attackTypes'>
-                          {preset.attackTypes.map((attackType, i) => {
-                              return <div className='attackType' key={attackType}>
-                                  <div>{attackType}</div>
-                                  <div>({preset.attackTypeCounts[i]})</div>
-                              </div>
-                          })}
+                      <div className='options'>
+                          <button className='copy' onClick={() => {
+                              setNewPresetData({isChanged: true, ID: j, name: presets[j].name, length: presets.length})
+                              alert('Пресет скопирован! Обновите страницу')
+                          }}/>
+                          <button className='delete' onClick={() => {
+                              if(window.confirm('Вы точно хотите удалить пресет?')) {
+                                  fetch(`${SERVER_URL}/removePreset?presetindex=${j}&adminkey=${adminKey}`)
+                                  setReload(true)
+                              }
+                          }}/>
                       </div>
                   </div>
-                  <div className='options'>
-                      <button className='copy' onClick={() => {
-                          setNewPresetData({isChanged: true, ID: i, name: preset.name, length: presets.length})
-                          alert('Пресет скопирован! Обновите страницу')
-                      }}/>
-                      <button className='delete' onClick={() => {
-                          if(window.confirm('Вы точно хотите удалить пресет?')) {
-                              fetch(`${SERVER_URL}/removePreset?presetindex=${i}&adminkey=${adminKey}`)
-                              setReload(true)
-                          }
-                      }}/>
-                  </div>
-              </div>
+              )
           }) : null}
           {doesReload ? reload() : null}
       </div>
