@@ -25,6 +25,7 @@ At the bottom admin can exit his account or change the password
 
 ![MainPage](src/images/mainPage.png)
 
+
 ## Room Page
 In this page admin can track progress of players, hide/show QR-code
 directing to game with this room's setup.
