@@ -48,7 +48,7 @@ export const MainPage = () => {
                         <div className='savePopupButtons'>
                             <button className='save' onClick={() => {
                                 if(!newPass || newPass !== confirmPass) {
-                                    alert('Ffofofof')
+                                    alert('Пароли не совпадают! Попробуйте снова')
                                 } else {
                                     // console.log('New pass', newPass)
                                     fetch(`${SERVER_URL}/changePassword?adminkey=${adminKey}&newpassword=${newPass}`)
