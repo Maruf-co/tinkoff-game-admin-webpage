@@ -7,9 +7,9 @@ import {SERVER_URL} from "./App";
 
 export const finalTextTemplate = [
     [
-        'я',
-        'люблю',
-        'пельмени'
+        'вы',
+        'прошли',
+        'замок'
     ],
     [
         'ты',
@@ -19,7 +19,7 @@ export const finalTextTemplate = [
     [
         'ура',
         'ура',
-        'ору'
+        'молодчина'
     ],
     [
         'Спасибо за прохождение игры',

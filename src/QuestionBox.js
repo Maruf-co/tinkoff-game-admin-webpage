@@ -61,7 +61,7 @@ export const QuestionBox = (props) => {
                 <button className='addQuestion' onClick={() => {
                     setAnswers([...answers, {text: '', checkBox: false}])
                 }}>
-                    <div className='addQuestionText'>Добавить вопрос</div>
+                    <div className='addQuestionText'>Добавить ответ</div>
                 </button>
                 : null}
         </div>
@@ -97,7 +97,7 @@ export const QuestionBox = (props) => {
                         <button className='addQuestion' onClick={() => {
                             setAnswers([...answers, {text: '', checkBox: false}])
                         }}>
-                            <div className='addQuestionText'>Добавить вопрос</div>
+                            <div className='addQuestionText'>Добавить ответ</div>
                         </button>
                         : null}
                 </div>
@@ -145,7 +145,7 @@ export const QuestionBox = (props) => {
                     <button className='addQuestion' onClick={() => {
                         setAnswers([...answers, {text: '', checkBox: false}])
                     }}>
-                        <div className='addQuestionText'>Добавить вопрос</div>
+                        <div className='addQuestionText'>Добавить ответ</div>
                     </button>
                     : null}
             </div>
@@ -187,7 +187,7 @@ export const QuestionBox = (props) => {
             <button className='addQuestion' onClick={() => {
                 setAnswers([...answers, {text: '', checkBox: false}])
             }}>
-                <div className='addQuestionText'>Добавить вопрос</div>
+                <div className='addQuestionText'>Добавить ответ</div>
             </button>
         </div>
     }
