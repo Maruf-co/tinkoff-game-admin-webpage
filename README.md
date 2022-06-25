@@ -17,10 +17,11 @@ Ordinary login page for several admins preventing access of everyone to website
 
 ## Main Page
 In this main page admin able to go to other 2 pages or exit pressing button in the bottom. <br/>
-On the left side admin can create new room, hide/show old rooms (pressing 'Старые комнаты' button),
+On the left side admin can create new room, add congrats text for winners of game, add user policy, hide/show old rooms (pressing 'Старые комнаты' button),
 go to created rooms or delete them. <br/>
 On the right site there is ability to create new preset (pressing '+ Создать пресет' button), copy/delete 
-existing presets or go to their page for modification by clicking on them.
+existing presets or go to their page for modification by clicking on them. <br/>
+At the bottom admin can exit his account or change the password
 
 ![MainPage](src/images/mainPage.png)
 
