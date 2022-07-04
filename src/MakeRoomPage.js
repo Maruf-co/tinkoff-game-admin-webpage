@@ -14,7 +14,6 @@ export const MakeRoomPage = () => {
     const [leaderboard, setLeaderboard] = useState()
     const [mailPopUp, setMailPopUp] = useState(false)
     let [level, setLevel] = useState(0);
-
     const QR_CODE_URL = SERVER_URL.split('://').join('%3a%2f%2f') + '%2f'
 
     useEffect(() => {
