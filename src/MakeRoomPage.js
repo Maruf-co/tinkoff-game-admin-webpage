@@ -30,7 +30,7 @@ export const MakeRoomPage = () => {
             <h2>{location.state.preset}</h2>
             <div className = 'QRCode'>
                 <img
-                    src={`https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=https://tinkoff-quest-test-server.herokuapp.com/play?code=${location.state.name}`}
+                    src={`https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=https://tinkoff-quest-test-server.herokuapp.com/play?code=${location.state.name}&address=https%3a%2f%2ftinkoff-quest-test-server.herokuapp.com%2f`}
                     alt="roomQR"
                 />
             </div>
