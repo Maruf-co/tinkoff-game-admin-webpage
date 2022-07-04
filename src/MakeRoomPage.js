@@ -15,6 +15,8 @@ export const MakeRoomPage = () => {
     const [mailPopUp, setMailPopUp] = useState(false)
     let [level, setLevel] = useState(0);
 
+    const QR_CODE_URL = SERVER_URL.split('://').join('%3a%2f%2f') + '%2f'
+
     useEffect(() => {
         fetch(`${SERVER_URL}/getLeaderboard?roomcode=${location.state.name}`)
             .then(response => response.json())
@@ -30,7 +32,7 @@ export const MakeRoomPage = () => {
             <h2>{location.state.preset}</h2>
             <div className = 'QRCode'>
                 <img
-                    src={`https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=https://tinkoff-quest-test-server.herokuapp.com/play?code=${location.state.name}&address=https%3a%2f%2ftinkoff-quest-test-server.herokuapp.com%2f`}
+                    src={`https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=https://tinkoff-quest-test-server.herokuapp.com/play?code=${location.state.name}&address=${QR_CODE_URL}`}
                     alt="roomQR"
                 />
             </div>
