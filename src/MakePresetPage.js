@@ -394,8 +394,8 @@ export const MakePresetPage = () => {
                                 'Content-Type': 'application/json'
                             }
                         }
+                        console.log(presetFile)
                         fetch(`${SERVER_URL}/setPreset?adminkey=${adminKey}&presetindex=${location.state.presetID}`, options)
-
                         navigate(`/main/${adminKey}`)
                     } else {
                         alert('Пожалуйста, заполните все поля (название пресета, названия направлений)')

@@ -20,14 +20,12 @@ export const Login = () => {
                     navigate(`/main/${data.adminKey}`)
                 } else {
                     setError(true)
-                    // console.log('Error')
-                    // console.log('Login: ' + login + '\nPass: ' + password)
+                    // Some timeout for button to stay red
+                    setTimeout(() => {
+                        setError(false)
+                    }, 400)
                 }
             })
-        setTimeout(() => {
-            setError(false)
-            // console.log('Done')
-        }, 400)
     }, [login, password])
 
 

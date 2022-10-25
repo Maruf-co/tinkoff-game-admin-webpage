@@ -7,19 +7,19 @@ import {SERVER_URL} from "./App";
 
 export const finalTextTemplate = [
     [
-        'вы',
-        'прошли',
-        'замок'
+        '',
+        '',
+        ''
     ],
     [
-        'ты',
-        'победил',
-        'друг'
+        '',
+        '',
+        ''
     ],
     [
-        'ура',
-        'ура',
-        'молодчина'
+        '',
+        '',
+        ''
     ],
     [
         'Спасибо за прохождение игры',
@@ -207,11 +207,12 @@ export const RoomCreator = () => {
                                     </div>
                                 })}
 
-                                <button className='deleteRoom' onClick={() => {
+                                <button className='deleteRoom' onClick={(event) => {
                                     if(window.confirm('Вы точно хотите удалить комнату?')) {
                                         fetch(`${SERVER_URL}/removeRoom?roomcode=${oldRooms[i].code}&adminkey=${adminKey}`)
                                         document.location.reload(true)
                                     }
+                                    event.stopPropagation()
                                 }} />
                             </div>
                         </div>

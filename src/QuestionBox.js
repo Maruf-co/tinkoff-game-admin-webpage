@@ -251,8 +251,8 @@ export const QuestionBox = (props) => {
                     maxLength="150"
                     onBlur={(changeEvent) => {
                         setQuestion(changeEvent.target.value);
-                        // updateQuestionBlock()
-                        // setIsValid(updateQuestionBlock(answers, props, question))
+                        updateQuestionBlock()
+                        setIsValid(updateQuestionBlock(answers, props, question))
                     }}
                 />
                 <div className='answers'>Ответы:</div>
