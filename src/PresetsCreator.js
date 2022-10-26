@@ -3,12 +3,12 @@ import {useNavigate} from 'react-router-dom'
 import {useState, useEffect} from "react";
 
 import {getDate, hashCode} from "./MakePresetPage";
+import { adminKey } from './MainPage';
 import {SERVER_URL} from "./App";
 
 
 export const PresetsCreator = () => {
     let navigate = useNavigate()
-    const adminKey = document.cookie.split(';')[0]
     const [presets, setPresets] = useState()
     const [doesReload, setReload] = useState(false)
     const [newPresetData, setNewPresetData] = useState({ID: -1, isChanged: false, name: '', length: -1})

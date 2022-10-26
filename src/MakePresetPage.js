@@ -3,6 +3,7 @@ import {useLocation, useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 import {QuestionBox} from "./QuestionBox";
+import { adminKey } from './MainPage';
 
 import {SERVER_URL} from "./App";
 
@@ -216,7 +217,6 @@ export const hashCode = (word) => {
 export const MakePresetPage = () => {
     let navigate = useNavigate()
     const location = useLocation()
-    const adminKey = document.cookie.split(';')[0]
     const [presetName, setPresetName] = useState('')
     const [categoryNames, setCategoryNames] = useState(['', '', ''])
 
@@ -382,6 +382,7 @@ export const MakePresetPage = () => {
                     <div className='dataUnderText'>Название пресета</div>
                 </div>
                 <button className='back' onClick={() => {
+                    setPresetQuestions(presetQuestions)
                     if(presetName && categoryNames[0] && categoryNames[1] && categoryNames[2]) {
                         const presetFile = collectPresetData()
                         if (location.state.isNew) {

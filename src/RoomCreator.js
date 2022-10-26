@@ -3,6 +3,7 @@ import './styles/RoomCreator.css';
 import {useState, useEffect} from "react";
 import {useNavigate} from 'react-router-dom'
 
+import { adminKey } from './MainPage';
 import {SERVER_URL} from "./App";
 
 export const finalTextTemplate = [
@@ -31,7 +32,6 @@ export const finalTextTemplate = [
 
 export const RoomCreator = () => {
     let navigate = useNavigate()
-    const adminKey = document.cookie.split(';')[0]
     const [roomName, setRoomName] = useState('')
     const [finalWordsChosen, setFinalWordsChosen] = useState(0)
     const finalInputPlaceholders = ['верхнее', 'центральное', 'нижнее']

@@ -2,13 +2,13 @@ import './styles/MakeRoomPage.css'
 
 import {useNavigate, useLocation} from 'react-router-dom'
 import {useState, useEffect} from "react";
+import { adminKey } from './MainPage';
 
 import {SERVER_URL} from "./App";
 
 
 export const MakeRoomPage = () => {
     const titleIterator = [0, 1, 2]
-    const adminKey = document.cookie.split(';')[0]
     let navigate = useNavigate()
     const location = useLocation()
     const [leaderboard, setLeaderboard] = useState()

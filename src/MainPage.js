@@ -1,6 +1,6 @@
 import './styles/MainPage.css';
 
-import {Link, useNavigate} from "react-router-dom";
+import {Link, useNavigate, useLocation} from "react-router-dom";
 // pages
 import {RoomCreator} from "./RoomCreator";
 import {PresetsCreator} from "./PresetsCreator";
@@ -11,11 +11,11 @@ export const adminKey = document.cookie.split(';')[0]
 
 export const MainPage = () => {
     let navigate = useNavigate()
+    const location = useLocation()
     const [newPass, setNewPass] = useState('')
     const [confirmPass, setConfirmPass] = useState('')
 
     const [passEditorVisibility, setPassEditorVisibility] = useState(false)
-
     return(
         <div className='container'>
             <div className='innerContainer'>
@@ -23,7 +23,9 @@ export const MainPage = () => {
                 <PresetsCreator/>
             </div>
             <div className='exit'>
-                <div className='exitText' onClick={() => setPassEditorVisibility(true)}>
+                <div className='exitText' onClick={() => {
+                    setPassEditorVisibility(true)
+                }}>
                     [Редактировать пароль]
                 </div>
                 <Link className='exitText' to='/'>
@@ -50,18 +52,19 @@ export const MainPage = () => {
                                 if(!newPass || newPass !== confirmPass) {
                                     alert('Пароли не совпадают! Попробуйте снова')
                                 } else {
-                                    // console.log('New pass', newPass)
-                                    fetch(`${SERVER_URL}/changePassword?adminkey=${adminKey}&newpassword=${newPass}`)
+                                    console.log('New pass', newPass)
+                                    console.log('adminKey', adminKey)
+                                    fetch(`${SERVER_URL}/changePassword?adminkey=${location.state.pass}&newpassword=${newPass}`)
                                         .then(response => response.json())
-                                        .then(data => console.log(data))
+                                        .then(data => console.log(data, adminKey))
                                     alert('Пароль обновлён!')
                                     setPassEditorVisibility(false)
                                 }
                             }}>
                                 Сохранить
                             </button>
-                            <button className='cancel' onClick={() => setPassEditorVisibility(false)}>
-                                Отменить
+                            <button className='cancel' onClick={() =>setPassEditorVisibility(false)}>
+                                {adminKey}
                             </button>
                         </div>
                     </div>

@@ -5,6 +5,7 @@ import {useState, useCallback} from "react";
 
 import {SERVER_URL} from "./App";
 
+
 export const Login = () => {
     let navigate = useNavigate()
     const [error, setError] = useState(false)
@@ -17,7 +18,8 @@ export const Login = () => {
             .then(data => {
                 if(data.adminKey) {
                     document.cookie = data.adminKey
-                    navigate(`/main/${data.adminKey}`)
+                    
+                    navigate(`/main/${data.adminKey}`, {state:{pass: data.adminKey}})
                 } else {
                     setError(true)
                     // Some timeout for button to stay red
